@@ -33,6 +33,5 @@ print(Person._age)
 
 del p
 
-
 person = Person()
 print(person._age)
