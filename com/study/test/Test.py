@@ -1,4 +1,8 @@
+#导入模块
+import sys
+
 from com.study.test.base import DateUtils
+#导入class
 from com.study.test.cls.Person import Person
 
 print(DateUtils.getCurrentDateTime().tm_year);
@@ -37,3 +41,10 @@ str = input('enter')
 print('input:{0}'.format(str))
 
 print("说的水电费")
+
+print('命令行参数如下:')
+for i in sys.argv:
+   print(i)
+
+print('python path:',sys.path)
+
