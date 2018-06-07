@@ -1,8 +1,5 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from numpy.ma import array
-
-from com.study.ai.ms import KNN
 
 mpl.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 mpl.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
