@@ -1,5 +1,8 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from numpy.ma import array
+
+from com.study.ai.ms import KNN
 
 mpl.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 mpl.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
@@ -23,5 +26,15 @@ def show2():
     plt.show()
 
 
+
+def show3():
+    mat, labels = KNN.file2matrix('data.txt')
+    norMat,ranges,minVals = KNN.autoNorm(mat)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(norMat[:, 1], norMat[:, 2], 15 * array(labels), 15 * array(labels))
+    plt.show()
+
 # show1()
-show2()
+#show2()
+show3()
