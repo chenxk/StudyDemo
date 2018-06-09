@@ -1,12 +1,15 @@
 import numpy as np
 
-a = np.array([[1, 2, 3], [4, 5, 6]])
+a = np.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])
 print(a)
 '''
 ndarray.shape
 这一数组属性返回一个包含数组维度的元组，它也可以用于调整数组大小。
 '''
 print(a.shape)  # (2,3)
+print(np.shape(a))  # (2,3)
+print(a.shape[0])
+print(a.shape[1])
 
 a = np.array([[1, 2, 3], [4, 5, 6]])
 a.shape = (3, 2)

@@ -20,21 +20,24 @@ def show1():
 
 def show2():
     mat, labels = KNN.file2matrix('data.txt')
+    print(mat)
+    print(mat[:,1])
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.scatter(mat[:, 1], mat[:, 2], 15 * array(labels), 15 * array(labels))
+    #输出数组的第二列和第三列
+    ax.scatter(mat[:, 1], mat[:, 2], 10 * array(labels), 10 * array(labels))
     plt.show()
-
 
 
 def show3():
     mat, labels = KNN.file2matrix('data.txt')
-    norMat,ranges,minVals = KNN.autoNorm(mat)
+    norMat, ranges, minVals = KNN.autoNorm(mat)
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.scatter(norMat[:, 1], norMat[:, 2], 15 * array(labels), 15 * array(labels))
     plt.show()
 
+
 # show1()
-#show2()
+# show2()
 show3()
