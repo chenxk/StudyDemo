@@ -122,3 +122,11 @@ it = iter(list)
 # 使用迭代器创建 ndarray
 x = np.fromiter(it, dtype=float)
 print(x)
+
+
+a = np.array([[1,3,2]])
+print(np.append(a, [[7,8,9]],axis = 0))
+
+
+x = np.empty([0, 2], dtype=int)
+print(x)

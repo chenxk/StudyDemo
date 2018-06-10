@@ -87,6 +87,7 @@ print('\n')
 # 现在我们会打印出大于 5 的元素
 print('大于 5 的元素是：')
 print(x[x > 5])
+print(x[x > 5])
 
 # 这个例子使用了~(取补运算符)来过滤NaN
 a = np.array([np.nan, 1, 2, np.nan, 3, 4, 5])

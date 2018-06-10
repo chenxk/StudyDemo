@@ -16,22 +16,33 @@
     能作为函数的返回结果
 
 '''
-import  time
-
+import time
 
 '''
 format date time
 return string
 '''
-#Python 函数是对象。这里我们创建了一个函数，然后调用它，读取它的 __doc__ 属性，并且确定函数对象本身是 function 类的实例。
-def formatDateTime(date = time.localtime(time.time()),formatStr = '%Y-%m-%d %H:%M:%S'):
+
+
+# Python 函数是对象。这里我们创建了一个函数，然后调用它，读取它的 __doc__ 属性，并且确定函数对象本身是 function 类的实例。
+def formatDateTime(date=time.localtime(time.time()), formatStr='%Y-%m-%d %H:%M:%S'):
     timeStr = (time.strftime(formatStr, date))
     return timeStr
+
+
+# Python 函数是对象。这里我们创建了一个函数，然后调用它，读取它的 __doc__ 属性，并且确定函数对象本身是 function 类的实例。
+def formatDateTimeBySeconds(dateTime, formatStr='%Y-%m-%d %H:%M:%S'):
+    date=time.localtime(dateTime)
+    timeStr = (time.strftime(formatStr, date))
+    return timeStr
+
 
 
 '''
 获取当前时间
 '''
+
+
 def getCurrentDateTime():
     return time.localtime(time.time())
 
@@ -39,6 +50,10 @@ def getCurrentDateTime():
 '''
 获取当前时间戳
 '''
-def getCurrentTimeMillis():
-    return int(time.time()*1000);
 
+
+def getCurrentTimeMillis():
+    return int(time.time() * 1000)
+
+
+print(formatDateTime(time.localtime(1528584967)))
