@@ -72,7 +72,7 @@ def classify0(inX, dataSet, labels, k):
         # reverse：True 倒叙排序
         # print(classCount.items())
     sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
-    print(sortedClassCount)
+    # print(sortedClassCount)
     return sortedClassCount
 
 # print(classify0(0.2, group, labels, 3))

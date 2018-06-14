@@ -58,6 +58,7 @@ def handwritingTestSimple():
         vectorUnderTest = img2vector('digits/testDigits/%s' % (fileNameStr))
         classResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
         print("the classifier came back with:%d, the real answer is : %d" % (classResult[0][0], classNumStr))
+        print(classResult)
         if classResult[0][0] != classNumStr:
             errorCount += 1
     print("the total error rate is :%f ,errorCount:%d, numTest:%d" % (errorCount / float(mTest), errorCount, mTest))
