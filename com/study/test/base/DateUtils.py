@@ -32,10 +32,9 @@ def formatDateTime(date=time.localtime(time.time()), formatStr='%Y-%m-%d %H:%M:%
 
 # Python 函数是对象。这里我们创建了一个函数，然后调用它，读取它的 __doc__ 属性，并且确定函数对象本身是 function 类的实例。
 def formatDateTimeBySeconds(dateTime, formatStr='%Y-%m-%d %H:%M:%S'):
-    date=time.localtime(dateTime)
+    date = time.localtime(dateTime)
     timeStr = (time.strftime(formatStr, date))
     return timeStr
-
 
 
 '''

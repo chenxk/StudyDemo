@@ -6,6 +6,7 @@ from com.study.test.base import DateUtils
 from com.study.test.cls.Person import Person
 
 print(DateUtils.getCurrentDateTime().tm_year);
+print(DateUtils.getCurrentDateTime());
 
 print(Person.__bases__)
 
