@@ -51,9 +51,12 @@ class DoNumber(Resource):
             # 验证是否是可用的
             b = phonenumbers.is_valid_number(x)
             data['isValid'] = b
-            # 格式化
+            # 本国格式化
+            rx = phonenumbers.format_number(x, phonenumbers.PhoneNumberFormat.NATIONAL)
+            data['nationalFormat'] = rx
+            # 国际格式化
             rx = phonenumbers.format_number(x, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
-            data['format'] = rx
+            data['internationalFormat'] = rx
             # 地区
             c = geocoder.description_for_number(x, "en")
             data['region'] = c
