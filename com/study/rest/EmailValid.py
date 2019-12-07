@@ -5,6 +5,9 @@ from validate_email import validate_email
 # 从wsgiref模块导入:
 from wsgiref.simple_server import make_server
 import logging
+import phonenumbers
+from phonenumbers import geocoder
+from phonenumbers import carrier
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -22,6 +25,7 @@ class DoEmail(Resource):
             logger.info('valid email:{0}'.format(email))
             is_valid = validate_email(email, verify=True)
             data = {'email': email, 'isValid': is_valid}
+            logger.info('valid result:{0}'.format(data))
         except Exception as err:
             logger.error(err, exc_info=True)
             code = 1000
@@ -30,7 +34,42 @@ class DoEmail(Resource):
         return {'code': code, 'message': message, 'data': data}
 
 
-api.add_resource(DoEmail, '/check/<email>')
+class DoNumber(Resource):
+    def get(self, number):
+        code = 0
+        message = 'success'
+        data = {'number': number, 'isValid': None}
+
+        try:
+            if not number.startswith("+"):
+                number = "+" + number
+            logger.info('valid number:{0}'.format(number))
+            x = phonenumbers.parse(number, None)
+            data['countryCode'] = x.country_code
+            data['nationalNumber'] = x.national_number
+            # a = phonenumbers.is_possible_number(x)
+            # 验证是否是可用的
+            b = phonenumbers.is_valid_number(x)
+            data['isValid'] = b
+            # 格式化
+            rx = phonenumbers.format_number(x, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
+            data['format'] = rx
+            # 地区
+            c = geocoder.description_for_number(x, "en")
+            data['region'] = c
+            # 运营商
+            d = carrier.name_for_number(x, "en")
+            data['carrier'] = d
+            logger.info('valid result:{0}'.format(data))
+        except Exception as err:
+            logger.error(err, exc_info=True)
+            code = 1000
+            message = 'valid fail'
+        return {'code': code, 'message': message, 'data': data}
+
+
+api.add_resource(DoEmail, '/check/email/<email>')
+api.add_resource(DoNumber, '/check/number/<number>')
 
 # if __name__ == '__main__':
 #    app.run(debug=True, port=8100)
