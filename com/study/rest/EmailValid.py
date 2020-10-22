@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
-from flask_restful import reqparse, abort, Api, Resource
+from flask_restful import Api, Resource
 from validate_email import validate_email
 # 从wsgiref模块导入:
 from wsgiref.simple_server import make_server
